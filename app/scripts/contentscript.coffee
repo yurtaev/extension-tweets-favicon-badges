@@ -1,18 +1,14 @@
-get_favicon = ->
-  link = document.getElementsByTagName("head")[0].getElementsByTagName("link")
-  l = link.length
-  i = (l - 1)
+# hack
+# Uncaught SecurityError: Failed to execute 'toDataURL' on 'HTMLCanvasElement': tainted canvases may not be exported.
 
-  while i >= 0
-    return link[i]  if (/(^|\s)icon(\s|$)/i).test(link[i].getAttribute("rel"))
-    i--
-  false
+favicon_element = document.querySelector('link[rel="shortcut icon"]')
 
-favicon_elemnt = get_favicon()
-favicon_elemnt.href = 'https://twitter.com/favicons/favicon.ico' # hack
+if favicon_element
+  favicon_element.href = 'https://twitter.com/favicons/favicon.ico'
+
 
 count = 0
-favicon= new Favico
+window.favicon= new Favico
   animation: 'popFade'
 
 update_count = ->
